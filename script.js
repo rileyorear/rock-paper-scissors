@@ -6,5 +6,5 @@ function randomNum () {
 }
 
 function getComputerChoice () {
-   
+   return weapons[randomNum()];
 }
