@@ -16,7 +16,6 @@ let message;
 let draw;
 
 function playRound (playerSelection, computerSelection) { //computerSelection should be getComputerChoice()  
-  
   playerSelection = playerSelection.toLowerCase();
   if (playerSelection === "rock" && computerSelection === "scissors") {
     message = "Round win! Rock beats scissors."
@@ -52,7 +51,7 @@ function playRound (playerSelection, computerSelection) { //computerSelection sh
   return message;
 }
 
-//5 round match - no more no less, ties count as a round but do not count towards score! - typos also count as a round but do not count towards score, make sure you are accurate!
+//5 round match - No more no less, ties count as a round but do not count towards score! Typos also count as a round but do not count towards score, make sure you are accurate!
 function game () {
   for (i = 0; i < 5; i++) {
     weaponChoice = prompt("What will you choose: rock, paper or scissors?", "");
@@ -69,7 +68,27 @@ function game () {
   }
 }
 
-//best of 5 - game doesn't stop at 3 wins if all 5 rounds haven't been played (gives possibility of the 5-0 sweep destruction) - ties are not counted.
+//first to 3 - Just like how it sounds, first to 3 wins is the winner. Ties are not counted. 
+function firstToThree () {
+  let keepGoing = true;
+  while (keepGoing) {
+    if (playerWinCounter === 3 || computerWinCounter === 3) {
+      break;
+    } else {
+      weaponChoice = prompt("What will you choose: rock, paper or scissors?", "");
+      console.log(playRound (weaponChoice, getComputerChoice()));
+      console.log("Player score: " + playerWinCounter);
+      console.log("Computer score: " + computerWinCounter);
+    }
+  }
+  if (playerWinCounter > computerWinCounter) {
+    console.log("Player wins!")
+  } else if (playerWinCounter < computerWinCounter) {
+    console.log("Computer wins!")
+  }
+}
+
+//best of 5 - Game doesn't stop at 3 wins if all 5 rounds haven't been played (gives possibility of the 5-0 sweep destruction). Ties are not counted.
 function bestOfFive () {
   let gameCounter = 0;
   let keepGoing = true;
@@ -100,7 +119,6 @@ function bestOfFive () {
   }
 }
 
-
-
 //game();
+//firstToThree();
 //bestOfFive();
