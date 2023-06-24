@@ -9,11 +9,14 @@ function getComputerChoice () {
    return weapons[randomNum()];
 }
 
-//have to refresh browser each game for accurate winner results because counters do not reset
-let playerWinCounter = 0;
-let computerWinCounter = 0;
 let message;
 let draw;
+
+//have to refresh browser each game for accurate winner results because counters do not reset --- FIXED I CAN'T BELIEVE I DIDN'T FIGURE THIS OUT SOONER!
+let playerWinCounter;
+let computerWinCounter;
+playerWinCounter = 0;
+computerWinCounter = 0;
 
 function playRound (playerSelection, computerSelection) { //computerSelection should be getComputerChoice()  
   playerSelection = playerSelection.toLowerCase();
@@ -61,10 +64,16 @@ function game () {
   }
   if (playerWinCounter > computerWinCounter) {
     console.log("Player wins!")
+    playerWinCounter = 0;
+    computerWinCounter = 0;
   } else if (playerWinCounter < computerWinCounter) {
     console.log("Computer wins!")
+    playerWinCounter = 0;
+    computerWinCounter = 0;
   } else {
     console.log("It's a total draw!")
+    playerWinCounter = 0;
+    computerWinCounter = 0;
   }
 }
 
@@ -83,8 +92,12 @@ function firstToThree () {
   }
   if (playerWinCounter > computerWinCounter) {
     console.log("Player wins!")
+    playerWinCounter = 0;
+    computerWinCounter = 0;
   } else if (playerWinCounter < computerWinCounter) {
     console.log("Computer wins!")
+    playerWinCounter = 0;
+    computerWinCounter = 0;
   }
 }
 
@@ -112,10 +125,14 @@ function bestOfFive () {
     console.log("Player wins!")
     console.log("Player score: " + playerWinCounter);
     console.log("Computer score: " + computerWinCounter);
+    playerWinCounter = 0;
+    computerWinCounter = 0;
   } else if (playerWinCounter < computerWinCounter) {
     console.log("Computer wins!")
     console.log("Player score: " + playerWinCounter);
     console.log("Computer score: " + computerWinCounter);
+    playerWinCounter = 0;
+    computerWinCounter = 0;
   }
 }
 
