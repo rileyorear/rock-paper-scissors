@@ -1,6 +1,5 @@
 const weapons = ["rock", "paper", "scissors"];
 
-//random number 0-2
 function randomNum () {
   return Math.floor(Math.random() * 3);
 }
@@ -12,13 +11,12 @@ function getComputerChoice () {
 let message;
 let draw;
 
-//have to refresh browser each game for accurate winner results because counters do not reset --- FIXED I CAN'T BELIEVE I DIDN'T FIGURE THIS OUT SOONER!
 let playerWinCounter;
 let computerWinCounter;
 playerWinCounter = 0;
 computerWinCounter = 0;
 
-function playRound (playerSelection, computerSelection) { //computerSelection should be getComputerChoice()  
+function playRound (playerSelection, computerSelection) { 
   playerSelection = playerSelection.toLowerCase();
   if (playerSelection === "rock" && computerSelection === "scissors") {
     message = "Round win! Rock beats scissors."
@@ -135,7 +133,3 @@ function bestOfFive () {
     computerWinCounter = 0;
   }
 }
-
-//game();
-//firstToThree();
-//bestOfFive();
