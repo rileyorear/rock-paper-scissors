@@ -52,6 +52,52 @@ function playRound (playerSelection, computerSelection) {
   return message;
 }
 
+//ui
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+const headerText = document.querySelector('.header-text');
+const gameMessage = document.querySelector('.game-message');
+const playerScore = document.querySelector('.player-score');
+const computerScore = document.querySelector('.computer-score')
+
+rock.addEventListener('click', () => {
+  (playRound('rock', getComputerChoice()));
+  gameMessage.textContent = message;
+  playerScore.textContent = `Player Score: ${playerWinCounter}`;
+  computerScore.textContent = `Computer Score: ${computerWinCounter}`;
+  checkWin();
+});
+
+paper.addEventListener('click', () => {
+  (playRound('paper', getComputerChoice()));
+  gameMessage.textContent = message;
+  playerScore.textContent = `Player Score: ${playerWinCounter}`;
+  computerScore.textContent = `Computer Score: ${computerWinCounter}`;
+  checkWin();
+});
+
+scissors.addEventListener('click', () => {
+  (playRound('scissors', getComputerChoice()));
+  gameMessage.textContent = message;
+  playerScore.textContent = `Player Score: ${playerWinCounter}`;
+  computerScore.textContent = `Computer Score: ${computerWinCounter}`;
+  checkWin();
+});
+
+function checkWin () {
+  if (playerWinCounter === 5) {
+    gameMessage.textContent = `Player wins!`;
+    playerWinCounter = 0;
+    computerWinCounter = 0;
+  }
+  else if (computerWinCounter === 5) {
+    gameMessage.textContent = `Computer wins!`;
+    playerWinCounter = 0;
+    computerWinCounter = 0;
+  }
+}
+
 //5 round match - No more no less, ties count as a round but do not count towards score! Typos also count as a round but do not count towards score, make sure you are accurate!
 function game () {
   for (i = 0; i < 5; i++) {
