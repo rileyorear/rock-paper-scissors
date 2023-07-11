@@ -1,3 +1,4 @@
+//goal was to make ui work with each gamemode
 const weapons = ["rock", "paper", "scissors"];
 
 function randomNum () {
@@ -55,10 +56,11 @@ function playRound (playerSelection, computerSelection) {
 //5 round match - No more no less, ties count as a round but do not count towards score! Typos also count as a round but do not count towards score, make sure you are accurate!
 function game () {
   for (i = 0; i < 5; i++) {
-    weaponChoice = prompt("What will you choose: rock, paper or scissors?", "");
-    console.log(playRound (weaponChoice, getComputerChoice()));
+    button
+    console.log(playRound (weaponChoice(), getComputerChoice()));
     console.log("Player score: " + playerWinCounter);
     console.log("Computer score: " + computerWinCounter);
+    weaponChoice = null;
   }
   if (playerWinCounter > computerWinCounter) {
     console.log("Player wins!")
@@ -82,7 +84,7 @@ function firstToThree () {
     if (playerWinCounter === 3 || computerWinCounter === 3) {
       break;
     } else {
-      weaponChoice = prompt("What will you choose: rock, paper or scissors?", "");
+      
       console.log(playRound (weaponChoice, getComputerChoice()));
       console.log("Player score: " + playerWinCounter);
       console.log("Computer score: " + computerWinCounter);
@@ -105,7 +107,7 @@ function bestOfFive () {
   let keepGoing = true;
   while (keepGoing) {
     if (gameCounter !== 5) {
-      weaponChoice = prompt("What will you choose: rock, paper or scissors?", "");
+      
       console.log(playRound (weaponChoice, getComputerChoice()));
       if (draw === true) {
       console.log("Player score: " + playerWinCounter);
@@ -132,4 +134,45 @@ function bestOfFive () {
     playerWinCounter = 0;
     computerWinCounter = 0;
   }
+}
+
+//ui
+const button1 = document.querySelector('.button1');
+const button2 = document.querySelector('.button2');
+const button3 = document.querySelector('.button3');
+const buttons = document.querySelectorAll()
+const headerText = document.querySelector('.header-text');
+const gameText = document.querySelector('.game-text');
+
+function defaultSelection () {
+  button1.textContent = '5 round match';
+  button2.textContent = 'First to 3';
+  button3.textContent = 'Best of 5';
+  button1.addEventListener('click', game);
+  button2.addEventListener('click', firstToThree);
+  button3.addEventListener('click', bestOfFive);
+}
+defaultSelection();
+
+function whenGameSelected () {
+  headerText.textContent = 'What will you choose: rock, paper, or scissors?';
+  button1.textContent = 'Rock';
+  button2.textContent = 'Paper';
+  button3.textContent = 'Scissors';
+  button1.removeEventListener('click', game);
+  button2.removeEventListener('click', firstToThree);
+  button3.removeEventListener('click', bestOfFive);
+  button1.addEventListener('click', () => {
+    buttonContent = button1.textContent;
+  });
+  button2.addEventListener('click', () => {
+    buttonContent = button1.textContent;
+  });
+  button3.addEventListener('click', () => {
+    buttonContent = button1.textContent;
+  });
+}
+
+function weaponChoice () {
+
 }
